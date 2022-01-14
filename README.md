@@ -17,6 +17,18 @@
 * User can change root password in Instance (Tested only Ubuntu)
 * Supports cloud-init datasource interface
 
+## USAGE:
+
+```
+docker run --name webvirtcloud -d -p 80:80 -p 6080:6080 armv8a/webvirtcloud
+```
+
+login docker container,run:
+
+```
+sudo -u www-data ssh-copy-id root@compute1
+```
+
 ### Warning!!!
 
 How to update <code>gstfsd</code> daemon on hypervisor:
