@@ -1,6 +1,6 @@
 {% extends "console-base.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 
 {% block head %}
 <!--
@@ -145,7 +145,7 @@
                     <div class="noVNC_heading">
                         <img src="{% static "js/novnc/app/images/clipboard.svg" %}"> Clipboard
                     </div>
-                    <textarea id="noVNC_clipboard_text" rows=5></textarea>
+                    <textarea id="noVNC_clipboard_text"rows=5></textarea>
                     <br />
                     <input id="noVNC_clipboard_clear_button" type="button" value="Clear" class="noVNC_submit" />
                 </div>
@@ -219,7 +219,8 @@
                                         </li>
                                         <li>
                                             <label for="noVNC_setting_path">Path:</label>
-                                            <input id="noVNC_setting_path" type="text" value="websockify">
+                                            <!-- <input id="noVNC_setting_path" type="text" value="websockify"> -->
+                                            <input id="noVNC_setting_path" type="text" value="{{ ws_path }}">
                                         </li>
                                     </ul></div>
                                 </li>

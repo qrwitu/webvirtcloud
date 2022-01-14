@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load bootstrap4 %}
+{% load django_bootstrap5 %}
 
 {% block title %}{% trans "Logs" %}{% endblock %}
 
@@ -11,8 +11,7 @@
     <div class="col-lg-12">
         {% if not logs %}
             <div class="col-lg-12">
-                <div class="alert alert-warning alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <div class="alert alert-warning shadow-sm">
                     <i class="fa fa-exclamation-triangle"></i> <strong>{% trans "Warning" %}:</strong> {% trans "You don't have any Logs" %}
                 </div>
             </div>
@@ -24,6 +23,7 @@
                             <th scope="col">#</th>
                             <th scope="col">{% trans "Date" %}</th>
                             <th scope="col">{% trans "User" %}</th>
+                            <th scope="col">{% trans "Host" %}</th>
                             <th scope="col">{% trans "Instance" %}</th>
                             <th scope="col">{% trans "Message" %}</th>
                             </tr>
@@ -34,6 +34,7 @@
                                 <td>{{ log.id }}</td>
                                 <td style="width:130px;">{{ log.date|date:"M d H:i:s" }}</td>
                                 <td>{{ log.user }}</td>
+                                <td>{{ log.host }}</td>
                                 <td>{{ log.instance }}</td>
                                 <td>{{ log.message }}</td>
                             </tr>

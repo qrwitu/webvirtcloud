@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load icons %}
-{% load staticfiles %}
+{% load static %}
 {% block title %}{% trans "Instances" %}{% endblock %}
 {% block style %}
-    <link rel="stylesheet" href="{% static "css/sortable-theme-bootstrap.css" %}" />
+    <link rel="stylesheet" href="{% static 'css/sortable-theme-bootstrap.css' %}" />
 {% endblock %}
 {% block page_heading %}{% trans "Instances" %}{% endblock page_heading %}
 
@@ -12,9 +12,7 @@
 {% if request.user.is_superuser %}
     {% include 'create_inst_block.html' %}
 {% endif %}
-<div class="float-right search">
-    <input id="filter" class="form-control" type="text" placeholder="{% trans 'Search' %}">
-</div>
+    {% include 'search_block.html' %}
 {% endblock page_heading_extra %}
 
 {% block content %}
@@ -22,9 +20,7 @@
         {% if compute.status is not True %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {% trans 'Problem occurred with host' %} {{ compute.name }}: {{ compute.status }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
         {% endif %}
     {% endfor %}
@@ -37,7 +33,7 @@
     </div>
 {% endblock content %}
 {% block script %}
-    <script src="{% static "js/sortable.min.js" %}"></script>
+    <script src="{% static 'js/sortable.min.js' %}"></script>
     <script src="{% static 'js/filter-table.js' %}"></script>
     {% if request.user.is_superuser %}
         <script>

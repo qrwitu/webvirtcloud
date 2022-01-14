@@ -1,4 +1,5 @@
 import json
+import os
 
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
@@ -90,11 +91,16 @@ def storage(request, compute_id, pool):
     """
 
     def handle_uploaded_file(path, f_name):
-        target = path + "/" + str(f_name)
-        destination = open(target, "wb+")
-        for chunk in f_name.chunks():
-            destination.write(chunk)
-        destination.close()
+        target = os.path.normpath(os.path.join(path, str(f_name)))
+        if not target.startswith(path):
+            raise Exception(_("Security Issues with file uploading"))
+        
+        try:
+            with open(target, "wb+") as f:
+                for chunk in f_name.chunks():
+                    f.write(chunk)
+        except FileNotFoundError:
+            messages.error(request, _("File not found. Check the path variable and filename"))
 
     compute = get_object_or_404(Compute, pk=compute_id)
     meta_prealloc = False
@@ -141,7 +147,7 @@ def storage(request, compute_id, pool):
             volname = request.POST.get("volname", "")
             vol = conn.get_volume(volname)
             vol.delete(0)
-            messages.success(request, _("Volume: %(volume)s is deleted.") % {"vol": volname})
+            messages.success(request, _("Volume: %(vol)s is deleted.") % {"vol": volname})
             return redirect(reverse("storage", args=[compute.id, pool]))
             # return HttpResponseRedirect(request.get_full_path())
         if "iso_upload" in request.POST:
@@ -171,7 +177,7 @@ def storage(request, compute_id, pool):
                     name = conn.clone_volume(data["image"], data["name"], format, meta_prealloc)
                     messages.success(
                         request,
-                        _("%(image)s image cloned as %(clone)s successfully") % {"image": data["image"], "name": name},
+                        _("%(image)s image cloned as %(name)s successfully") % {"image": data["image"], "name": name},
                     )
                     return HttpResponseRedirect(request.get_full_path())
                 except libvirtError as lib_err:

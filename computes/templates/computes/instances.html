@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% load icons %}
 {% block title %}{% trans "Instances" %} - {{ compute.name }}{% endblock %}
 {% block style %}
@@ -10,13 +10,11 @@
 
 {% block page_heading_extra %}
 <a href="{% url 'instances:create_instance_select_type' compute.id %}"
-    class="btn btn-success btn-header float-right">
+    class="btn btn-success btn-header float-end">
     {% icon 'plus' %}
 </a>
 {% if instances %}
-<div class="float-right search">
-    <input id="filter" class="form-control" type="text" placeholder="{% trans 'Search' %}">
-</div>
+    {% include 'search_block.html' %}
 {% endif %}
 {% endblock page_heading_extra %}
 
@@ -24,12 +22,12 @@
 <div class="row">
     <div class="col-lg-12">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-light shadow-sm">
-                <li class="breadcrumb-item active">
+            <ol class="breadcrumb shadow-sm">
+                <li class="breadcrumb-item">
                     <a href="{% url 'overview' compute.id %}">{% icon 'dashboard' %} {% trans "Overview" %}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <span class="font-weight-bold">{% icon 'server' %} {% trans "Instances" %}</span>
+                    <span class="fw-bold">{% icon 'server' %} {% trans "Instances" %}</span>
                 </li>
                 <li class="breadcrumb-item">
                     <a href="{% url 'storages' compute.id %}">{% icon 'hdd-o' %} {% trans "Storages" %}</a>
@@ -44,7 +42,7 @@
                     <a href="{% url 'nwfilters' compute.id %}">{% icon 'filter' %} {% trans "NWFilters" %}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{% url 'secrets' compute.id %}">{% icon 'key' %} {% trans "Secrets" %}</a>
+                    <a href="{% url 'virtsecrets' compute.id %}">{% icon 'key' %} {% trans "Secrets" %}</a>
                 </li>
             </ol>
         </nav>
@@ -53,10 +51,9 @@
 <div class="row">
     <div class="col-lg-12">
         {% if not instances %}
-            <div class="alert alert-warning alert-dismissable fade show">
+            <div class="alert alert-warning shadow-sm fade show">
                 {% icon 'exclamation-triangle' %} <strong>{% trans "Warning" %}:</strong>
                 {% trans "Hypervisor doesn't have any Instances" %}
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             </div>
         </div>
         {% else %}
@@ -75,9 +72,9 @@
                     {% for instance in instances  %}
                     <tr>
                         <td>
-                            <a class="text-secondary" href="{% url 'instances:instance' instance.id %}">
-                                {{ instance.name }}
-                            </a>
+                            <a class="link-primary" href="{% url 'instances:instance' instance.id %}">{{ instance.name }}</a>
+                            <br>
+                            <p class="m-0 small fst-italic">{{ instance.title }}</p>
                         </td>
                         <td>
                             <em>

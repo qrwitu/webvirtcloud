@@ -1,4 +1,4 @@
-FROM phusion/baseimage:18.04-1.0.0
+FROM phusion/baseimage:focal-1.1.0
 
 EXPOSE 80
 EXPOSE 6080
@@ -21,6 +21,9 @@ RUN apt-get update -qqy \
 	nginx \
 	pkg-config \
 	gcc \
+	libldap2-dev \
+	libssl-dev \
+	libsasl2-dev \
 	libsasl2-modules \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
