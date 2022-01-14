@@ -149,11 +149,14 @@ const UI = {
         let port = window.location.port;
         if (!port) {
             if (window.location.protocol.substring(0, 5) == 'https') {
-                port = 443;
+                //port = 443;
+                port = 6080;
             } else if (window.location.protocol.substring(0, 4) == 'http') {
-                port = 80;
+                //port = 80;
+                port = 6080;
             }
         }
+        port = 6080;
 
         /* Populate the controls if defaults are provided in the URL */
         UI.initSetting('host', window.location.hostname);
