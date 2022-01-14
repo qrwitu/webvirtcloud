@@ -390,7 +390,7 @@ class InstancesTestCase(TestCase):
         response = self.client.post(
             reverse('instances:add_cdrom', args=[self.instance.id]),
             {
-                'bus': 'sata',
+                'bus': 'scsi',
             },
             HTTP_REFERER=reverse('index'),
         )
