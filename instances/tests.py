@@ -139,7 +139,7 @@ class InstancesTestCase(TestCase):
                 'cache_mode': 'directsync',
                 'nwfilter': '',
                 'graphics': 'spice',
-                'video': 'vga',
+                'video': 'virtio',
                 'listener_addr': '0.0.0.0',
                 'console_pass': '',
                 'qemu_ga': False,
@@ -528,7 +528,7 @@ class InstancesTestCase(TestCase):
         self.assertEqual(self.instance.guest_agent, False)
 
     def test_video_model(self):
-        self.assertEqual(self.instance.video_model, 'vga')
+        self.assertEqual(self.instance.video_model, 'virtio')
 
         response = self.client.post(
             reverse('instances:set_video_model', args=[self.instance.id]),

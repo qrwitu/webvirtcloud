@@ -307,7 +307,8 @@ class wvmCreate(wvmConnect):
             elif volume.get("bus") == "fdc":
                 xml += """<target dev='fd%s' bus='%s'/>""" % (fd_disk_letters.pop(0), volume.get("bus"))
             elif volume.get("bus") == "sata" or volume.get("bus") == "scsi":
-                xml += """<target dev='sd%s' bus='%s'/>""" % (sd_disk_letters.pop(0), volume.get("bus"))
+                ##xml += """<target dev='sd%s' bus='%s'/>""" % (sd_disk_letters.pop(0), volume.get("bus"))
+                xml += """<target dev='sd%s' bus='scsi'/>""" % (sd_disk_letters.pop(0))
             else:
                 xml += """<target dev='sd%s'/>""" % sd_disk_letters.pop(0)
             xml += """</disk>"""
@@ -325,14 +326,15 @@ class wvmCreate(wvmConnect):
                           <driver name='qemu' type='raw'/>
                           <source file = '' />
                           <readonly/>"""
-            if "ide" in dom_caps["disk_bus"]:
-                xml += """<target dev='hd%s' bus='%s'/>""" % (hd_disk_letters.pop(0), "ide")
-            elif "sata" in dom_caps["disk_bus"]:
-                xml += """<target dev='sd%s' bus='%s'/>""" % (sd_disk_letters.pop(0), "sata")
-            elif "scsi" in dom_caps["disk_bus"]:
-                xml += """<target dev='sd%s' bus='%s'/>""" % (sd_disk_letters.pop(0), "scsi")
-            else:
-                xml += """<target dev='vd%s' bus='%s'/>""" % (vd_disk_letters.pop(0), "virtio")
+            ##if "ide" in dom_caps["disk_bus"]:
+                ##xml += """<target dev='hd%s' bus='%s'/>""" % (hd_disk_letters.pop(0), "ide")
+            ##elif "sata" in dom_caps["disk_bus"]:
+                ##xml += """<target dev='sd%s' bus='%s'/>""" % (sd_disk_letters.pop(0), "sata")
+            ##elif "scsi" in dom_caps["disk_bus"]:
+                ##xml += """<target dev='sd%s' bus='%s'/>""" % (sd_disk_letters.pop(0), "scsi")
+            ##else:
+                ##xml += """<target dev='vd%s' bus='%s'/>""" % (vd_disk_letters.pop(0), "virtio")
+            xml += """<target dev='vd%s' bus='%s'/>""" % (vd_disk_letters.pop(0), "virtio")
             xml += """</disk>"""
 
         if mac:

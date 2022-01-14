@@ -914,7 +914,7 @@ def set_guest_agent(request, pk):
 @superuser_only
 def set_video_model(request, pk):
     instance = get_instance(request.user, pk)
-    video_model = request.POST.get("video_model", "vga")
+    video_model = request.POST.get("video_model", "virtio")
     instance.proxy.set_video_model(video_model)
     msg = _("Set Video Model: %(model)s") % {"model": video_model}
     addlogmsg(request.user.username, instance.compute.name, instance.name, msg)
