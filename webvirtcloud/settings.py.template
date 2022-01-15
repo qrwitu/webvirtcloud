@@ -186,7 +186,7 @@ WS_PORT = 6080
 WS_HOST = "0.0.0.0"
 
 # Websock public port - 80 or 443 if reverse-proxy, else 6080
-WS_PUBLIC_PORT = 6080
+WS_PUBLIC_PORT = 443
 
 # Websock public host
 WS_PUBLIC_HOST = None
@@ -195,7 +195,8 @@ WS_PUBLIC_HOST = None
 WS_PUBLIC_PATH = "/novncd/"
 
 # Websock Certificate for SSL
-WS_CERT = None
+# WS_CERT = None
+WS_CERT = "/ssl/srv.crt"
 
 # List of console listen addresses
 QEMU_CONSOLE_LISTEN_ADDRESSES = (

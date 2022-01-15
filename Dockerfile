@@ -1,12 +1,13 @@
 FROM phusion/baseimage:focal-1.1.0
 
-# USEAGE: docker run --name webvirtcloud -d -p 80:80 -p 6080:6080 armv8a/webvirtcloud
+# USEAGE: docker run --name webvirtcloud -d -p 80:80 -p 443:443 -p 6080:6080 armv8a/webvirtcloud
 # login docker container,run:
 # docker exec -i -t webvirtcloud /bin/bash
 # sudo -u www-data ssh-copy-id root@compute1
 # exit
 
 EXPOSE 80
+EXPOSE 443
 EXPOSE 6080
 
 # Use baseimage-docker's init system.
@@ -16,7 +17,6 @@ RUN rm -rf /etc/apt/sources.list
 ADD sources.list  /etc/apt/sources.list
 
 RUN apt clean all ; apt update ; apt upgrade -y
-
 
 RUN echo 'APT::Get::Clean=always;' >> /etc/apt/apt.conf.d/99AutomaticClean
 
@@ -80,5 +80,12 @@ RUN sudo -u www-data ssh-keygen -t rsa -P "" -f ~www-data/.ssh/id_rsa
 RUN rm -rf /root/.ssh ; ln -sf /var/www/.ssh /root/.ssh ; chgrp www-data /root ; chmod 770 /root
 RUN echo 'sudo -u www-data ssh-copy-id $1' >  /usr/bin/sudo-ssh-copy-id ; chmod +x  /usr/bin/sudo-ssh-copy-id
 RUN cp  /usr/bin/sudo-ssh-copy-id / ; cp  /usr/bin/sudo-ssh-copy-id /root/
+
+# Add ssl crt
+RUN mkdir /ssl && \
+    openssl genrsa -out /ssl/srv.key 2048 && \
+    openssl req -new -subj /C=CN/ST=Sichuan/L=Chengdu/O=WebVirtCloud/OU=PrivateCloud/CN=aarch64.pricate-webvirtcloud.org -key /ssl/srv.key -out /ssl/srv.csr && \
+    openssl x509 -req -days 36500 -in /ssl/srv.csr -signkey /ssl/srv.key -out /ssl/srv.crt
+
 
 WORKDIR /srv/webvirtcloud

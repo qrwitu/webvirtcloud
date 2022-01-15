@@ -149,14 +149,11 @@ const UI = {
         let port = window.location.port;
         if (!port) {
             if (window.location.protocol.substring(0, 5) == 'https') {
-                //port = 443;
-                port = 6080;
+                port = 443;
             } else if (window.location.protocol.substring(0, 4) == 'http') {
-                //port = 80;
-                port = 6080;
+                port = 80;
             }
         }
-        port = 6080;
 
         /* Populate the controls if defaults are provided in the URL */
         UI.initSetting('host', window.location.hostname);
@@ -169,7 +166,7 @@ const UI = {
         UI.initSetting('shared', true);
         UI.initSetting('view_only', false);
         UI.initSetting('show_dot', false);
-        UI.initSetting('path', 'websockify');
+        UI.initSetting('path', 'novncd/websockify');
         UI.initSetting('repeaterID', '');
         UI.initSetting('reconnect', false);
         UI.initSetting('reconnect_delay', 5000);
