@@ -1,9 +1,12 @@
 FROM phusion/baseimage:focal-1.1.0
 
-# USEAGE: docker run --name webvirtcloud -d -p 80:80 -p 443:443 -p 6080:6080 armv8a/webvirtcloud
+# USEAGE:
+# sudo docker run --name webvirtcloud -d -p 80:80 -p 443:443 -p 6080:6080 armv8a/webvirtcloud
 # login docker container,run:
-# docker exec -i -t webvirtcloud /bin/bash
-# sudo -u www-data ssh-copy-id root@compute1
+# sudo docker exec -i -t webvirtcloud /bin/bash
+# sudo -u www-data ssh-copy-id root@computer1
+# or run:
+# sudo-ssh-copy-id root@computer1
 # exit
 
 EXPOSE 80
