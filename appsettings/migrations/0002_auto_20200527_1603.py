@@ -27,7 +27,7 @@ def add_default_settings(apps, schema_editor):
         setting(17, _("VM Machine Type"), "INSTANCE_MACHINE_DEFAULT_TYPE", "virt", "virt", _("Chipset/Machine type")),
         setting(18, _("VM Firmware Type"), "INSTANCE_FIRMWARE_DEFAULT_TYPE", "UEFI", "BIOS,UEFI", _("Firmware type for x86_64")),
         setting(19, _("VM Architecture Type"), "INSTANCE_ARCH_DEFAULT_TYPE", "aarch64", "aarch64,armv7l,armv6l", _("Architecture type: x86_64, i686, etc")),
-        setting(20, _("VM Console Type"), "QEMU_CONSOLE_DEFAULT_TYPE", "vnc", "vnc,spice", _("Default console type")),
+        setting(20, _("VM Console Type"), "QEMU_CONSOLE_DEFAULT_TYPE", "vnc", "vnc", _("Default console type")),
         setting(21, _("VM Clone Name Prefix"), "CLONE_INSTANCE_DEFAULT_PREFIX", "instance", "True,False", _("Prefix for cloned instance name")),
         setting(22, _("VM Clone Auto Name"), "CLONE_INSTANCE_AUTO_NAME", "False", "True,False", _("Generated name for cloned instance")),
         setting(23, _("VM Clone Auto Migrate"), "CLONE_INSTANCE_AUTO_MIGRATE", "False", "True,False", _("Auto migrate instance after clone")),

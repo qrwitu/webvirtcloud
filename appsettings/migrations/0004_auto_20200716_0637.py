@@ -8,10 +8,10 @@ def add_default_settings(apps, schema_editor):
     setting = apps.get_model("appsettings", "AppSettings")
     db_alias = schema_editor.connection.alias
     setting.objects.using(db_alias).bulk_create([
-        setting(27, _("Console Scale"), "CONSOLE_SCALE", "False", "True,False", _("Allow console to scaling view")),
+        setting(27, _("Console Scale"), "CONSOLE_SCALE", "True", "True,False", _("Allow console to scaling view")),
         setting(28, _("Console View-Only"), "CONSOLE_VIEW_ONLY", "False", "True,False", _("Allow only view not modify")),
-        setting(29, _("Console Resize Session"), "CONSOLE_RESIZE_SESSION", "False", "True,False", _("Allow to resize session for console")),
-        setting(30, _("Console Clip Viewport"), "CONSOLE_CLIP_VIEWPORT", "False", "True,False", _("Clip console viewport")),
+        setting(29, _("Console Resize Session"), "CONSOLE_RESIZE_SESSION", "True", "True,False", _("Allow to resize session for console")),
+        setting(30, _("Console Clip Viewport"), "CONSOLE_CLIP_VIEWPORT", "True", "True,False", _("Clip console viewport")),
     ])
 
 

@@ -12,6 +12,6 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='permissionset',
-            options={'default_permissions': (), 'managed': False, 'permissions': [('clone_instances', 'Can clone instances'), ('passwordless_console', 'Can access console without password')]},
+            options={'default_permissions': (), 'managed': False, 'permissions': [('clone_instances', '允许克隆实例'), ('passwordless_console', '无需密码即可访问控制台')]},
         ),
     ]

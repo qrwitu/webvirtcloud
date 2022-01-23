@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
             ],
             options={
-                'permissions': (('clone_instances', 'Can clone instances'),),
+                'permissions': (('clone_instances', '允许克隆实例'),),
                 'managed': False,
                 'default_permissions': (),
             },

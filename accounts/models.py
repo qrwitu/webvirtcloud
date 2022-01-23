@@ -73,6 +73,6 @@ class PermissionSet(models.Model):
     """
     class Meta:
         default_permissions = ()
-        permissions = (('change_password', _('Can change password')), )
+        permissions = (('change_password', _('允许更改密码')), )
 
         managed = False

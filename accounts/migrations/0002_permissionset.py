@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
             ],
             options={
-                'permissions': (('change_password', 'Can change password'), ),
+                'permissions': (('change_password', '允许更改密码'), ),
                 'managed': False,
                 'default_permissions': (),
             },

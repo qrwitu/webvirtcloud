@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.models import Group, User
@@ -78,9 +79,13 @@ class UserForm(forms.ModelForm):
                 label=_("Password"),
                 help_text=format_lazy(
                     _(
-                        """Raw passwords are not stored, so there is no way to see this user's password, 
-                    but you can change the password using <a href='{}'>this form</a>."""
+                        """原始密码未存储，因此无法查看该用户的密码， 
+                    但是您可以点击<a href='{}'>此处</a>来设置。"""
                     ),
+                    #_(
+                    #    """Raw passwords are not stored, so there is no way to see this user's password, 
+                    #but you can change the password using <a href='{}'>this form</a>."""
+                    #),
                     reverse_lazy(
                         "admin:user_update_password",
                         args=[

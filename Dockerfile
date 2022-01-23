@@ -87,7 +87,7 @@ RUN cp  /usr/bin/sudo-ssh-copy-id / ; cp  /usr/bin/sudo-ssh-copy-id /root/
 # Add ssl crt
 RUN mkdir /ssl && \
     openssl genrsa -out /ssl/srv.key 2048 && \
-    openssl req -new -subj /C=CN/ST=Sichuan/L=Chengdu/O=WebVirtCloud/OU=PrivateCloud/CN=aarch64.pricate-webvirtcloud.org -key /ssl/srv.key -out /ssl/srv.csr && \
+    openssl req -new -subj /C=CN/ST=CN/L=CN/O=WebVirtCloud/OU=PrivateCloud/CN=aarch64.pricate-webvirtcloud.org -key /ssl/srv.key -out /ssl/srv.csr && \
     openssl x509 -req -days 36500 -in /ssl/srv.csr -signkey /ssl/srv.key -out /ssl/srv.crt
 
 
