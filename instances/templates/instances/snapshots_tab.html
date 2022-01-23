@@ -17,7 +17,8 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane tab-pane-bordered active" id="takesnapshot">
-            <p>{% trans "This may take more than an hour, depending on how much content is on your instance and how large the disk is. It could cause web server timeout.." %}</p>
+	    <!-- <p>{% trans "This may take more than an hour, depending on how much content is on your instance and how large the disk is. It could cause web server timeout.." %}</p> -->
+	    <p>这可能需要一个多小时，具体取决于您的实例上的内容以及磁盘大小，它可能导致Web服务器超时...（目前ARM64平台暂时不支持该功能！）</p>
             <form action="{% url 'instances:snapshot' instance.id %}" method="post" role="form" aria-label="Create snapshot form">
                 {% csrf_token %}
                 
