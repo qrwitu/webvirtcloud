@@ -210,16 +210,14 @@ class wvmCreate(wvmConnect):
                           <bootmenu enable='yes'/>"""
             if firmware:
                 if firmware["secure"] == "yes":
-                    xml += """<loader readonly='%s' type='%s' secure='%s'>%s</loader>""" % (
+                    xml += """<loader readonly='%s' type='rom' secure='%s'>%s</loader>""" % (
                         firmware["readonly"],
-                        firmware["type"],
                         firmware["secure"],
                         firmware["loader"],
                     )
                 if firmware["secure"] == "no":
-                    xml += """<loader readonly='%s' type='%s'>%s</loader>""" % (
+                    xml += """<loader readonly='%s' type='rom'>%s</loader>""" % (
                         firmware["readonly"],
-                        firmware["type"],
                         firmware["loader"],
                     )
             xml += """</os>"""
@@ -227,7 +225,8 @@ class wvmCreate(wvmConnect):
         if caps["features"]:
             xml += """<features>"""
             if "acpi" in caps["features"]:
-                xml += """<acpi/> <gic version='host'/>"""
+                ## xml += """<acpi/> <gic version='host'/>"""
+                xml += """<gic version='host'/>"""
             if "apic" in caps["features"]:
                 xml += """<apic/>"""
             if "pae" in caps["features"]:

@@ -2537,7 +2537,7 @@ msgstr "管理快照"
 msgid ""
 "This may take more than an hour, depending on how much content is on your instance and how large the disk is. It could cause web server timeout.."
 msgstr ""
-"这可能需要一个多小时，具体取决于您的实例上的内容以及磁盘大小，它可能导致Web服务器超时...（目前ARM64平台暂时不支持该功能！）"
+"这可能需要一个多小时，具体取决于您的实例上的内容以及磁盘大小，它可能导致Web服务器超时...（ARM64平台该功能仅作测试使用！）"
 
 #: instances/templates/instances/snapshots_tab.html:25
 msgid "Enter Snapshot Name"
