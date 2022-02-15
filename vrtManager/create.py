@@ -210,14 +210,16 @@ class wvmCreate(wvmConnect):
                           <bootmenu enable='yes'/>"""
             if firmware:
                 if firmware["secure"] == "yes":
-                    xml += """<loader readonly='%s' type='rom' secure='%s'>%s</loader>""" % (
+                    xml += """<loader readonly='%s' type='%s' secure='%s'>%s</loader>""" % (
                         firmware["readonly"],
+                        firmware["type"],
                         firmware["secure"],
                         firmware["loader"],
                     )
                 if firmware["secure"] == "no":
-                    xml += """<loader readonly='%s' type='rom'>%s</loader>""" % (
+                    xml += """<loader readonly='%s' type='%s'>%s</loader>""" % (
                         firmware["readonly"],
+                        firmware["type"],
                         firmware["loader"],
                     )
             xml += """</os>"""
