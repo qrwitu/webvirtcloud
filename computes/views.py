@@ -175,7 +175,7 @@ def get_compute_disk_buses(request, compute_id, arch, machine, disk):
             if disk == "disk":
                 data["bus"] = sorted(disk_device_types)
             elif disk == "cdrom":
-                data["bus"] = ["virtio", "ide", "sata", "scsi"]
+                data["bus"] = ["usb", "virtio", "ide", "sata", "scsi"]
             elif disk == "floppy":
                 data["bus"] = ["fdc"]
             elif disk == "lun":

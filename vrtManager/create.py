@@ -315,10 +315,16 @@ class wvmCreate(wvmConnect):
             if volume.get("bus") == "scsi":
                 xml += f"""<controller type='scsi' model='{volume.get('scsi_model')}'/>"""
 
+
         ## add usb dom support with mode qemu-xhci
         xml += f"""<controller type='usb' model='qemu-xhci'/>"""
         xml += f"""<input type='mouse' bus='usb'/>"""
         xml += f"""<input type='keyboard' bus='usb'/>"""
+        xml += f"""<input type='tablet' bus='usb'/>"""
+        xml += f"""<input type='mouse' bus='virtio'/>"""
+        xml += f"""<input type='keyboard' bus='virtio'/>"""
+        xml += f"""<input type='tablet' bus='virtio'/>"""
+
 
         if add_cd:
             xml += """<disk type='file' device='cdrom'>
@@ -333,7 +339,9 @@ class wvmCreate(wvmConnect):
                 ##xml += """<target dev='sd%s' bus='%s'/>""" % (sd_disk_letters.pop(0), "scsi")
             ##else:
                 ##xml += """<target dev='vd%s' bus='%s'/>""" % (vd_disk_letters.pop(0), "virtio")
-            xml += """<target dev='vd%s' bus='%s'/>""" % (vd_disk_letters.pop(0), "virtio")
+            
+            ##xml += """<target dev='vd%s' bus='%s'/>""" % (vd_disk_letters.pop(0), "virtio")
+            xml += """<target dev='vd%s' bus='%s'/>""" % (vd_disk_letters.pop(0), "usb")
             xml += """</disk>"""
 
         if mac:
