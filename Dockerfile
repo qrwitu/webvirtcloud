@@ -1,4 +1,4 @@
-FROM phusion/baseimage:focal-1.1.0
+FROM armv8a/phusion_baseimage:focal-1.1.0
 
 # USEAGE:
 # sudo docker run --name webvirtcloud -d -p 80:80 -p 443:443 -p 6080:6080 armv8a/webvirtcloud
