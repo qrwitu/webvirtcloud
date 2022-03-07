@@ -19,6 +19,8 @@
             {% trans "Incorrect username or password." %}
         </div>
     {% endif %}
+  <!--CustomAddStart-->
+  <div style="width:320px;margin: auto;background-color: aliceblue;">
     <form class="form-signin" method="post" role="form" aria-label="Login form">{% csrf_token %}
         <h2 class="form-signin-heading">{% trans "Sign In" %}</h2>
         <input type="text" class="form-control" name="username" placeholder="{% trans "User" %}" autocapitalize="none" autocorrect="off" autofocus>
@@ -28,6 +30,8 @@
             <button class="btn btn-lg btn-success" type="submit">{% trans "Sign In" %}</button>
         </div>
     </form>
+  </div>
+  <!--CustomAddEnd-->
   <div style="text-align:center;"><img src="../../static/logo-s.png" style="vertical-align:middle;height:0.8em;">&nbsp;<span style="font-size:14px;">来自ARM64的澎湃动力，由飞腾CPU提供多样化算力支持！</span></div>
 </div>
 {% endblock %}
