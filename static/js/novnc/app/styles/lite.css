@@ -23,7 +23,8 @@ html {
 #noVNC_status_bar {
   width: 100%;
   display: flex;
-  position: sticky; top: 60;
+  position: sticky;
+  /*top: 60;*/
 }
 
 #noVNC_status {
