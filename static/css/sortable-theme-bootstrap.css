@@ -7,6 +7,11 @@ table[data-sortable] {
 table[data-sortable] th {
   vertical-align: bottom;
   font-weight: bold;
+  background-color: #ffdb0033;
+  background-image: var(--bs-gradient);
+  border-color: #287bb5;
+  color: #585858;
+  font-size: 16px;
 }
 /* line 10, ../sass/_sortable.sass */
 table[data-sortable] th, table[data-sortable] td {
