@@ -50,7 +50,7 @@
             </div>
         </form>-->
         <!--{% endif %}-->
-            <h3 class="page-header">{% trans "Other Settings" %}</h3>
+            <h4 class="page-header">{% trans "Other Settings" %}</h4>
         {% for setting in appsettings %}
             <form method="post" action="" role="form" aria-label="{{setting.name}} form">{% csrf_token %}
                 <div class="row mb-1">
