@@ -10,7 +10,7 @@
 
 {% block content %}
 <div class="page-header"><div style="text-align:center;"></br><img src="../../static/logo-new.png" style="text-align:center;vertical-align:middle;height: 3.8rem;"></br></br></div>
-	<div style="text-align:center;color:white;"><h2 style="font-weight:bold;">{% trans "WebVirtCloud" %}</h2></div>
+	<div style="text-align:center;color:white;"><h2 style="font-weight:bold;color:white;">{% trans "WebVirtCloud" %}</h2></div>
 </div>
 <div class="col-12" role="main">
     {% if form.errors %}
@@ -21,7 +21,7 @@
     {% endif %}
   <div style="width:320px;margin:auto;background-color:#f0f8ff69;margin:auto;box-shadow: 0px 0px 18px #00ffe8;">
     <form class="form-signin" method="post" role="form" aria-label="Login form">{% csrf_token %}
-        <h2 class="form-signin-heading" style="color:#ffffff;">{% trans "Sign In" %}</h2>
+        <h2 class="form-signin-heading" style="color:#ffffff;text-shadow:2px 2px 2px #2a3a5b;">{% trans "Sign In" %}</h2>
         <input type="text" class="form-control" name="username" placeholder="{% trans "User" %}" autocapitalize="none" autocorrect="off" autofocus>
         <input type="password" class="form-control" name="password" placeholder="{% trans "Password" %}">
         <input type="hidden" name="next" value="{{ next }}">
