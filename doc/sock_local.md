@@ -12,7 +12,7 @@ auth_unix_rw = "none"
 #### 2. Change :
 
 ```
-unix_sock_rw_perms = "0777"
+unix_sock_rw_perms = "0770"
 ```
 
 To:
