@@ -26,3 +26,9 @@ unix_sock_rw_perms = "0777"
 ```
 /var/run/libvirt/libvirt-sock
 ```
+
+Run:
+
+```
+sudo chmod 777 /var/run/libvirt/libvirt-sock
+```
