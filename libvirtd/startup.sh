@@ -47,3 +47,4 @@ libvirtd_pid="$!"
 virtlogd_pid="$!"
 
 wait
+
