@@ -20,4 +20,4 @@ docker run -d\
   -v /etc/libvirt/qemu:/etc/libvirt/qemu\
   -v /etc/libvirt/storage:/etc/libvirt/storage\
   -v /etc/libvirt/secrets:/etc/libvirt/secrets\
-  armv8a/libvirtd:20.4
+  armv8a/libvirtd:18.4
